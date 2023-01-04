@@ -1,0 +1,8 @@
+D:\cSharpPrograms\Serialization\Serialization\bin\Debug\Serialization.exe.config
+D:\cSharpPrograms\Serialization\Serialization\bin\Debug\Serialization.exe
+D:\cSharpPrograms\Serialization\Serialization\bin\Debug\Serialization.pdb
+D:\cSharpPrograms\Serialization\Serialization\obj\Debug\Serialization.csproj.AssemblyReference.cache
+D:\cSharpPrograms\Serialization\Serialization\obj\Debug\Serialization.csproj.SuggestedBindingRedirects.cache
+D:\cSharpPrograms\Serialization\Serialization\obj\Debug\Serialization.csproj.CoreCompileInputs.cache
+D:\cSharpPrograms\Serialization\Serialization\obj\Debug\Serialization.exe
+D:\cSharpPrograms\Serialization\Serialization\obj\Debug\Serialization.pdb
