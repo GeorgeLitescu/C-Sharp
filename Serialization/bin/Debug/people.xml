@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<ArrayOfPerson xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Person>
+    <name>Mitica</name>
+    <age>14</age>
+    <country>Argentina</country>
+  </Person>
+  <Person>
+    <name>Magdalena</name>
+    <age>98</age>
+    <country>Israel</country>
+  </Person>
+  <Person>
+    <name>Ionut</name>
+    <age>24</age>
+    <country>Romania</country>
+  </Person>
+  <Person>
+    <name>George</name>
+    <age>21</age>
+    <country>Romania</country>
+  </Person>
+  <Person>
+    <name>Miguel</name>
+    <age>32</age>
+    <country>Mexic</country>
+  </Person>
+</ArrayOfPerson>
