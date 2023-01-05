@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+
 
 namespace Serialization
 {
@@ -12,48 +7,27 @@ namespace Serialization
     {
         static void Main(string[] args)
         {
-            XmlCreator creator = new XmlCreator();
-            creator.DefaultXml();
-            creator.AddPerson("George", 21, "Romania");
-            creator.AddPerson("Miguel", 32, "Mexic");
-            creator.CreateXml();
+            XmlModifier modifier = new XmlModifier();
+            modifier.ReadXml();
+            modifier.AddPerson(new Person { name = "George", age = 21, country = "Romania" });
+            modifier.AddPerson(new Person { name = "Miguel", age = 32, country = "Mexic" });
+
+            if(modifier.SearchPerson(new Person { name = "Magdalena", age = 98, country = "Israel" }) != null)
+                Console.WriteLine("It exists");
+            else Console.WriteLine("No entry");
+
+            Console.WriteLine("{0} are {1} ani si este din {2}",
+                modifier.SearchName("George").name,
+                modifier.SearchName("George").age,
+                modifier.SearchName("George").country);
+
+            modifier.SearchName("Viorel").ChangeData("Boris", 34, "Germany");
+
+            modifier.RemovePerson(modifier.SearchName("Magdalena"));
+
+            modifier.CreateXml();
         }
     }
 
-    internal class XmlCreator
-    {
-        Person person = new Person();
-        IList<Person> persons = new List<Person>();
-        String path = Directory.GetCurrentDirectory() + @"\people.xml";
-
-        public void CreateXml()
-        {
-            XmlSerializer xs = new XmlSerializer(typeof(List<Person>));
-
-            using (FileStream stream = File.Create(path))
-            {
-                xs.Serialize(stream, persons);
-            }
-        }
-
-        public void AddPerson(string name, int age, string country)
-        {
-            persons.Add(new Person
-            {
-                name = name,
-                age = age,
-                country = country
-            });
-
-            //CreateXml();
-        }
-
-        public void DefaultXml()
-        {
-            persons = person.GetAllPersons();
-
-            //CreateXml();
-        }
-
-    }
+    
 }
