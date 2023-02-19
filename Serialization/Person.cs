@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 
 namespace Serialization
@@ -21,12 +22,13 @@ namespace Serialization
 
             return false;
         }
+
         public Person ChangeData(string name, int age, string country)
         {
             this.name = name;
-            this.age = age;
-            this.country = country;
-            return this;
+                this.age = age;
+                this.country = country;
+                return this;
         }
     }
 }

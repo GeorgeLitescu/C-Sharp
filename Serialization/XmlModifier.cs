@@ -8,8 +8,7 @@ namespace Serialization
 {
     public class XmlModifier
     {
-        Person person = new Person();
-        IList<Person> persons = new List<Person>();
+        public List<Person> persons = new List<Person>();
 
         String outputPath = Directory.GetCurrentDirectory() + @"\output.xml";
         String inputPath = Directory.GetCurrentDirectory() + @"\input.xml";

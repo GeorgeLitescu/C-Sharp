@@ -7,27 +7,41 @@ namespace Serialization
     {
         static void Main(string[] args)
         {
-            XmlModifier modifier = new XmlModifier();
-            modifier.ReadXml();
-            modifier.AddPerson(new Person { name = "George", age = 21, country = "Romania" });
-            modifier.AddPerson(new Person { name = "Miguel", age = 32, country = "Mexic" });
+            XmlModifier _xmlModifier = new XmlModifier();
+            XmlCommands _xmlCommands = new XmlCommands();
 
-            if(modifier.SearchPerson(new Person { name = "Magdalena", age = 98, country = "Israel" }) != null)
+            _xmlModifier.ReadXml();
+
+            //_xmlModifier.AddItem(new Person { name = "George", age = 21, country = "Romania" });
+            _xmlCommands.AddItem<Person>(_xmlModifier.persons,
+                new Person { name = "George", age = 21, country = "Romania" });
+
+            //_xmlModifier.AddItem(new Person { name = "Miguel", age = 32, country = "Mexic" });
+            _xmlCommands.AddItem<Person>(_xmlModifier.persons,
+                new Person { name = "Miguel", age = 32, country = "Mexic" });
+
+            /*  if (_xmlModifier.SearchPerson(new Person { name = "Magdalena", age = 98, country = "Israel" }) != null)
+             *      Console.WriteLine("It exists");
+             *  else Console.WriteLine("No entry");
+             */
+
+            if (_xmlCommands.SearchItem(_xmlModifier.persons,
+                    new Person { name = "Magdalena", age = 98, country = "Israel" }) != null)
                 Console.WriteLine("It exists");
             else Console.WriteLine("No entry");
 
-            Console.WriteLine("{0} are {1} ani si este din {2}",
-                modifier.SearchName("George").name,
-                modifier.SearchName("George").age,
-                modifier.SearchName("George").country);
 
-            modifier.SearchName("Viorel").ChangeData("Boris", 34, "Germany");
+            //_xmlModifier.SearchName("Viorel").ChangeData("Boris", 34, "Germany");
 
-            modifier.RemovePerson(modifier.SearchName("Magdalena"));
+            _xmlCommands.SearchItem<Person>(_xmlModifier.persons, new Person{name = "Viorel", age = 18, country = "Moldova"})
+                .ChangeData("Boris", 34, "Germany");
 
-            modifier.CreateXml();
+            //_xmlModifier.RemovePerson(_xmlModifier.SearchName("Magdalena"));
+
+            _xmlCommands.RemoveItem<Person>(_xmlModifier.persons, _xmlCommands.SearchItem<Person>(_xmlModifier.persons,
+                new Person { name = "Magdalena", age = 98, country = "Israel" }));
+           
+            _xmlModifier.CreateXml();
         }
     }
-
-    
 }
