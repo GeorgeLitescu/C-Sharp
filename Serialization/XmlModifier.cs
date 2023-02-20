@@ -10,8 +10,8 @@ namespace Serialization
     {
         public List<Person> persons = new List<Person>();
 
-        String outputPath = Directory.GetCurrentDirectory() + @"\output.xml";
-        String inputPath = Directory.GetCurrentDirectory() + @"\input.xml";
+        String outputPath = Path.GetFullPath("../../files") + @"\output.xml";
+        String inputPath = Path.GetFullPath("../../files") + @"\input.xml";
 
         XmlSerializer xs = new XmlSerializer(typeof(List<Person>));
 

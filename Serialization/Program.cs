@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 
 namespace Serialization
@@ -25,21 +26,23 @@ namespace Serialization
              *  else Console.WriteLine("No entry");
              */
 
-            if (_xmlCommands.SearchItem(_xmlModifier.persons,
-                    new Person { name = "Magdalena", age = 98, country = "Israel" }) != null)
-                Console.WriteLine("It exists");
-            else Console.WriteLine("No entry");
+            if (_xmlModifier.SearchPerson(new Person { name = "Magdalena", age = 98, country = "Israel" }) == null)
+                Console.WriteLine("No entry");
+            else Console.WriteLine("It exists");
 
 
             //_xmlModifier.SearchName("Viorel").ChangeData("Boris", 34, "Germany");
 
-            _xmlCommands.SearchItem<Person>(_xmlModifier.persons, new Person{name = "Viorel", age = 18, country = "Moldova"})
+           // _xmlCommands.SearchItem<Person>(_xmlModifier.persons, new Person{name = "Viorel", age = 18, country = "Moldova"})
+           //     .ChangeData("Boris", 34, "Germany");
+
+            _xmlModifier.SearchPerson(new Person { name = "Viorel", age = 18, country = "Moldova" })
                 .ChangeData("Boris", 34, "Germany");
 
-            //_xmlModifier.RemovePerson(_xmlModifier.SearchName("Magdalena"));
+            _xmlModifier.RemovePerson(_xmlModifier.SearchName("Magdalena"));
 
-            _xmlCommands.RemoveItem<Person>(_xmlModifier.persons, _xmlCommands.SearchItem<Person>(_xmlModifier.persons,
-                new Person { name = "Magdalena", age = 98, country = "Israel" }));
+            //_xmlCommands.RemoveItem<Person>(_xmlModifier.persons, _xmlCommands.SearchItem<Person>(_xmlModifier.persons,
+            //    new Person { name = "Magdalena", age = 98, country = "Israel" }));
            
             _xmlModifier.CreateXml();
         }
