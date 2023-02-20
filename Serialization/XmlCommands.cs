@@ -16,10 +16,10 @@ namespace Serialization
 
         public T SearchItem<T>(List<T> items, T item)
         {
-            foreach (T personFromDB in items)
+            foreach (T itemFromDB in items)
             {
-                if (item.Equals(personFromDB))
-                    return personFromDB;
+                if (item.Equals(itemFromDB))
+                    return itemFromDB;
             }
 
             return default(T);
