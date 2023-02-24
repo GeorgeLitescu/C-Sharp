@@ -12,9 +12,11 @@ namespace UsersAPI.Database.Context.Configs
 
             builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
 
-            builder.Property(x => x.Name).IsRequired();
+            builder.Property(x => x.Name).IsRequired().HasMaxLength(20);
 
-            builder.Property(x => x.isActive).IsRequired();
+            builder.Property(x => x.Age).IsRequired();
+
+            builder.Property(x => x.isActive).IsRequired().ValueGeneratedOnAdd().HasDefaultValue(true);
         }
     }
 }
