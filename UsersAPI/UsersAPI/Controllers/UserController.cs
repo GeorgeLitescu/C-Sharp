@@ -12,7 +12,6 @@ namespace UsersAPI.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    [Authorize]
     public class UserController : ControllerBase
     {
         private readonly DatabaseContext _context;

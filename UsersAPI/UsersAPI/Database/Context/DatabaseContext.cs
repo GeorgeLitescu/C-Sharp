@@ -6,6 +6,9 @@ namespace UsersAPI.Database.Context
 {
     public class DatabaseContext: DbContext
     {
+        public DatabaseContext(DbContextOptions options) : base(options)
+        {
+        }
 
         public DatabaseContext() { }
 
